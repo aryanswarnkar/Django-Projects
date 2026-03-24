@@ -55,3 +55,44 @@ Ensure you have **Python 3.x** and **pip** installed on your machine.
 ```bash
 git clone [https://github.com/YOUR_GITHUB_USERNAME/My-Awesome-cart.git](https://github.com/YOUR_GITHUB_USERNAME/My-Awesome-cart.git)
 cd My-Awesome-cart
+3. Create & Activate a Virtual Environment
+It is highly recommended to isolate dependencies using a virtual environment.
+
+Windows:
+
+PowerShell
+python -m venv myenv
+myenv\Scripts\activate
+macOS/Linux:
+
+Bash
+python3 -m venv myenv
+source myenv/bin/activate
+4. Install Dependencies
+Bash
+pip install Django~=4.2 Pillow
+5. Database Setup (Migrations)
+Apply the database migrations to set up the SQLite tables:
+
+Bash
+python manage.py makemigrations
+python manage.py migrate
+6. Create an Admin User (Optional)
+To access the Django Admin panel (/admin) and add your own products:
+
+Bash
+python manage.py createsuperuser
+7. Run the Local Server
+Bash
+python manage.py runserver
+Navigate to http://127.0.0.1:8000/shop in your browser to view the application!
+
+📬 Contact
+Aryan Swarnkar
+
+📧 Email: aryanswarnkar685@gmail.com
+
+💼 LinkedIn: [Your LinkedIn URL Here]
+
+
+**Would you like me to walk you through the terminal commands to push this new REA
