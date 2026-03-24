@@ -1,0 +1,115 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Checkout - My Awesome Cart{% endblock %}
+
+{% block css %}
+<style>
+    .checkout-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+    .section-title {
+        font-weight: 700;
+        color: #343a40;
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+    .form-control {
+        border-radius: 8px;
+        padding: 12px 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        transition: all 0.3s ease;
+    }
+    .form-control:focus {
+        background-color: #fff;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+    }
+    label {
+        font-weight: 600;
+        color: #495057;
+        font-size: 0.95rem;
+    }
+    .order-summary-card {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 15px;
+        padding: 25px;
+        position: sticky;
+        top: 90px; /* Sticks to the top when scrolling */
+    }
+    .list-group-item {
+        background: transparent;
+        border: none;
+        border-bottom: 1px dashed #ced4da;
+        padding: 15px 5px;
+        font-weight: 500;
+    }
+    .list-group-item:last-child {
+        border-bottom: none;
+    }
+    .badge-qty {
+        background-color: #007bff;
+        font-size: 0.9rem;
+        padding: 6px 10px;
+        border-radius: 50px;
+        color: white;
+    }
+    .total-bar {
+        background-color: #343a40;
+        color: #fff;
+        border-radius: 10px;
+        padding: 15px 20px;
+        font-size: 1.3rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .btn-place-order {
+        border-radius: 50px;
+        padding: 15px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        background-color: #28a745;
+        border: none;
+        width: 100%;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .btn-place-order:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row">
+
+        <div class="col-lg-7 order-2 order-lg-1">
+            <div class="checkout-card">
+                <h3 class="section-title"><i class="fas fa-shipping-fast text-primary mr-2"></i> Shipping Details</h3>
+
+                <form method="post" action="/shop/checkout/">{% csrf_token %}
+                    <input type="hidden" name="itemsJson" id="itemsJson">
+                    <input type="hidden" name="amount" id="amount">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Full Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email Address</label>
